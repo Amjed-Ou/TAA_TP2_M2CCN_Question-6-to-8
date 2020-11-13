@@ -20,8 +20,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.ws.rs.core.Application;
-
+import fr.istic.taa.jaxrs.rest.KanbanBoardResource;
 import fr.istic.taa.jaxrs.rest.PetResource;
+import fr.istic.taa.jaxrs.rest.SectionResource;
+import fr.istic.taa.jaxrs.rest.UtilisateurResource;
 import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
 
 public class TestApplication extends Application {
@@ -33,6 +35,10 @@ public class TestApplication extends Application {
         final Set<Class<?>> clazzes = new HashSet<Class<?>>();
 
         clazzes.add(PetResource.class);
+        
+        clazzes.add(UtilisateurResource.class);
+        clazzes.add(KanbanBoardResource.class);
+        clazzes.add(SectionResource.class);
         clazzes.add(OpenApiResource.class);
         
 

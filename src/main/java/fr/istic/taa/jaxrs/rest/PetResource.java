@@ -8,7 +8,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import fr.istic.taa.jaxrs.domain.Pet;
+import fr.istic.taa.jaxrs.DTO.Pet;
 import io.swagger.v3.oas.annotations.Parameter;
 
 @Path("/pet")
