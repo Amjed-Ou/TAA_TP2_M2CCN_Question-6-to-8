@@ -8,7 +8,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 import fr.istic.taa.jaxrs.dao.generic.FicheDAO;
@@ -38,14 +37,14 @@ public class FicheResource {
 
     @POST
     @Consumes("application/json")
-    public Response addFiche(@QueryParam("libelle") String libelle, @QueryParam("duree") int duree){
+    public Response addFiche(Fiche fiche){
     	
-        Fiche fiche = new Fiche();
-        fiche.setLibelle(libelle);
-        fiche.setDureeMinute(duree);
+        Fiche newFiche = new Fiche();
+        newFiche.setLibelle(fiche.getLibelle());
+        newFiche.setDureeMinute(fiche.getDureeMinute());
 
-        FicheDAO ficheD = new FicheDAO();
-        ficheD.save(fiche);
+        FicheDAO ficheDao = new FicheDAO();
+        ficheDao.save(newFiche);
 
         return Response.ok().entity("SUCCESS").build();
     }

@@ -8,7 +8,7 @@ import fr.istic.taa.jaxrs.dao.generic.UtilisateurDAO;
 import fr.istic.taa.jaxrs.domain.Utilisateur;
 
 
-@Path("/utilisateur")
+@Path("/")
 @Produces({"application/json", "application/xml"})
 public class UtilisateurResource {
 	
@@ -31,14 +31,14 @@ public class UtilisateurResource {
 
     @POST
     @Consumes("application/json")
-    public Response addUtilisateur(@QueryParam("name") String name, @QueryParam("email") String email){
+    public Response addUtilisateur(Utilisateur utilisateur){
     	
-        Utilisateur user = new Utilisateur();
-        user.setName(name);
-        user.setEmail(email);
+        Utilisateur newUtilisateur = new Utilisateur();
+        newUtilisateur.setName(utilisateur.getName());
+        newUtilisateur.setEmail(utilisateur.getEmail());
 
-        UtilisateurDAO usrD = new UtilisateurDAO();
-        usrD.save(user);
+        UtilisateurDAO usrDao = new UtilisateurDAO();
+        usrDao.save(newUtilisateur);  
 
         return Response.ok().entity("SUCCESS").build();
     }
